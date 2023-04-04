@@ -106,7 +106,7 @@ PUT site/api/tasks/edit/:taskID
  - exception: returns JSON with error message.
 
 ``` bash
-DELETE site/api/tasks/edit/:taskID
+DELETE site/api/tasks/delete/:taskID
 
 
 {
