@@ -6,7 +6,7 @@
 
 ## `/tasks`
 
-### `GET /`
+### `GET` `/`
  - success: returns a JSON containing an array with all the Tasks in the DB.
  - exception: returns status 404 and a JSON with the message 'No tasks yet'.
 
@@ -16,10 +16,10 @@ GET site/api/tasks
 
 {
    [
-    {
+   {
       "_id": "objID",
       "title": "task title 1",
-      "status": "ongoing",
+      "status": "pending",
       "description": "task description",
       "createdAt": "2023-03-13T22:50:26.219Z",
       "updatedAt": "2023-04-04T17:41:02.056Z"
@@ -27,16 +27,32 @@ GET site/api/tasks
     {
       "_id": "objID",
       "title": "task title 2",
-      "status": "pending",
+      "status": "onhold",
       "description": "task description",
       "createdAt": "2023-03-13T22:50:26.219Z",
       "updatedAt": "2023-04-04T17:41:02.056Z"
-    }
+    },
+    {
+      "_id": "objID",
+      "title": "task title 3",
+      "status": "ongoing",
+      "description": "task description",
+      "createdAt": "2023-03-13T22:50:26.219Z",
+      "updatedAt": "2023-04-04T17:41:02.056Z"
+    },
+    {
+      "_id": "objID",
+      "title": "task title 4",
+      "status": "finished",
+      "description": "task description",
+      "createdAt": "2023-03-13T22:50:26.219Z",
+      "updatedAt": "2023-04-04T17:41:02.056Z"
+    },
   ]
 }
 ```
 
-### `GET /:taskID`
+### `GET` `/:taskID`
  - expects: taskID.
  - success: returns a JSON containing the task.
  - exception: returns status 404 and a JSON with the message 'Task not found'.
@@ -58,10 +74,10 @@ GET site/api/tasks/taskID
 }
 ```
 
-### `POST /new`
+### `POST` `/new`
  - expects: an object with title, status, description properties.
  - success:  returns a JSON containing the recently added task.
- - exception: returns JSON with error message.
+ - exception: returns a JSON with an error message.
 
 ``` bash
 POST site/api/tasks/new
@@ -78,10 +94,10 @@ POST site/api/tasks/new
     }
 ]
 ```
-### `PUT /edit/:taskID`
- - expects: an object with the fields to modify (task, status, description) + taskID to find the task to modify.
- - success: returns status 200 and a JSON containing the edited task .
- - exception:  returns JSON with error message.
+### `PUT` `/edit/:taskID`
+ - expects: an object with the fields to modify (title, status, description) + taskID to find the task to modify.
+ - success: returns status 200 and a JSON containing the edited task.
+ - exception:  returns a JSON with an error message.
 
 ``` bash
 PUT site/api/tasks/edit/:taskID
@@ -100,10 +116,10 @@ PUT site/api/tasks/edit/:taskID
 }
 ```
 
-### `DELETE /delete/:taskID`
+### `DELETE` `/delete/:taskID`
  - expects: taskID.
  - success: returns a JSON containing all the tasks.
- - exception: returns JSON with error message.
+ - exception: returns a JSON with an error message.
 
 ``` bash
 DELETE site/api/tasks/delete/:taskID
@@ -111,14 +127,30 @@ DELETE site/api/tasks/delete/:taskID
 
 {
    [
-    {
+   {
       "_id": "objID",
-      "title": "task title 2",
+      "title": "task title 1",
       "status": "pending",
       "description": "task description",
       "createdAt": "2023-03-13T22:50:26.219Z",
       "updatedAt": "2023-04-04T17:41:02.056Z"
-    }
+    },
+    {
+      "_id": "objID",
+      "title": "task title 2",
+      "status": "onhold",
+      "description": "task description",
+      "createdAt": "2023-03-13T22:50:26.219Z",
+      "updatedAt": "2023-04-04T17:41:02.056Z"
+    },
+    {
+      "_id": "objID",
+      "title": "task title 3",
+      "status": "ongoing",
+      "description": "task description",
+      "createdAt": "2023-03-13T22:50:26.219Z",
+      "updatedAt": "2023-04-04T17:41:02.056Z"
+    },
   ]
 }
 ```
